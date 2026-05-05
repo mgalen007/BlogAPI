@@ -1,10 +1,4 @@
-import {
-  Controller,
-  Param,
-  Query,
-  ParseIntPipe,
-  Get,
-} from '@nestjs/common';
+import { Controller, Param, Query, ParseIntPipe, Get } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 
 @Controller('users')
@@ -20,10 +14,12 @@ export class UsersController {
   }
 
   @Get()
-  async findAll(@Query('limit', new ParseIntPipe({ optional: true })) limit?: number) {
-    const users = await this.usersService.findAll(limit)
+  async findAll(
+    @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
+  ) {
+    const users = await this.usersService.findAll(limit);
     return !users
       ? { success: true, message: 'No users yet', data: null }
-      : { success: true, data: users }
+      : { success: true, data: users };
   }
 }

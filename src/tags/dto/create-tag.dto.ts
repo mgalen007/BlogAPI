@@ -1,9 +1,9 @@
-import { IsString } from 'class-validator'
+import { IsString } from 'class-validator';
 
 export class CreateTagDto {
-    @IsString()
-    content!: string
+  @IsString()
+  content!: string;
 
-    @IsString()
-    postId!: string
+  @IsString()
+  postId!: string;
 }

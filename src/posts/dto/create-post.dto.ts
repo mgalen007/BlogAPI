@@ -1,13 +1,13 @@
-import { IsArray, IsString, IsOptional } from 'class-validator'
+import { IsArray, IsString, IsOptional } from 'class-validator';
 
 export class CreatePostDto {
-    @IsString()
-    authorId!: string
+  @IsString()
+  authorId!: string;
 
-    @IsString()
-    content!: string
+  @IsString()
+  content!: string;
 
-    @IsArray()
-    @IsOptional()
-    attachments?: string[]
+  @IsArray()
+  @IsOptional()
+  attachments?: string[];
 }

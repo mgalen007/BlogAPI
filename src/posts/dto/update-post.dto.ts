@@ -1,11 +1,11 @@
-import { IsArray, IsOptional, IsString } from 'class-validator'
+import { IsArray, IsOptional, IsString } from 'class-validator';
 
 export class UpdatePostDto {
-    @IsString()
-    @IsOptional()
-    content?: string
+  @IsString()
+  @IsOptional()
+  content?: string;
 
-    @IsArray()
-    @IsOptional()
-    attachments?: string[]
+  @IsArray()
+  @IsOptional()
+  attachments?: string[];
 }
