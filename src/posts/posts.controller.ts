@@ -12,6 +12,7 @@ import {
   ValidationPipe,
   Body,
   Delete,
+  ParseUUIDPipe
 } from '@nestjs/common';
 import { PostsExceptionFilter } from '../filters/posts.filter';
 import { PostsService } from './posts.service';
@@ -24,7 +25,7 @@ export class PostsController {
   constructor(private postsService: PostsService) {}
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  async findOne(@Param('id', ParseUUIDPipe) id: string) {
     const post = await this.postsService.findOne(id);
     return { success: true, data: post };
   }
@@ -52,7 +53,7 @@ export class PostsController {
   @HttpCode(HttpStatus.NO_CONTENT)
   @Put(':id')
   async update(
-    @Param('id') id: string,
+    @Param('id', ParseUUIDPipe) id: string,
     @Body(ValidationPipe) body: UpdatePostDto,
   ): Promise<void> {
     await this.postsService.update(id, body);
@@ -60,7 +61,7 @@ export class PostsController {
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
-  async remove(@Param('id') id: string) {
+  async remove(@Param('id', ParseUUIDPipe) id: string) {
     await this.postsService.remove(id)
   }
 }

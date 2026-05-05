@@ -1,4 +1,4 @@
-import { Controller, Param, Query, ParseIntPipe, Get } from '@nestjs/common';
+import { Controller, Param, Query, ParseIntPipe, Get, ParseUUIDPipe } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 
 @Controller('users')
@@ -6,7 +6,7 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  async findOne(@Param('id', ParseUUIDPipe) id: string) {
     const user = await this.usersService.findOne(id);
     const { username, email } = user;
     const bio = user.bio ?? null;

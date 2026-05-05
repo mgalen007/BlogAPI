@@ -11,6 +11,7 @@ import {
   ValidationPipe,
   HttpCode,
   HttpStatus,
+  ParseUUIDPipe
 } from '@nestjs/common';
 import { TagsService } from './tags.service';
 import { CreateTagDto } from './dto/create-tag.dto';
@@ -31,7 +32,7 @@ export class TagsController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  async findOne(@Param('id', ParseUUIDPipe) id: string) {
     const tag = await this.tagsService.findOne(id);
     return { success: true, data: tag };
   }
@@ -46,14 +47,14 @@ export class TagsController {
   @Put(':id')
   async update(
     @Body(ValidationPipe) body: UpdateTagDto,
-    @Param('id') id: string,
+    @Param('id', ParseUUIDPipe) id: string,
   ) {
     await this.tagsService.update(id, body);
   }
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
-  async remove(@Param('id') id: string) {
+  async remove(@Param('id', ParseUUIDPipe) id: string) {
     await this.tagsService.remove(id);
   }
 }
