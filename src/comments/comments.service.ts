@@ -26,12 +26,12 @@ export class CommentsService {
     }
 
     async update(id: string, comment: UpdateCommentDto) {
-        const oldComment = await this.prisma.comment.update({
+        const updatedComment = await this.prisma.comment.update({
             where: { id },
             data: comment
         })
-        if (!oldComment) throw new NotFoundException(`Comment with id ${id} not found`)
-        return oldComment
+        if (!updatedComment) throw new NotFoundException(`Comment with id ${id} not found`)
+        return updatedComment
     }
 
     async remove(id: string) {
