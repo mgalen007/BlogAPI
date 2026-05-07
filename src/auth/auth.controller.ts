@@ -7,6 +7,7 @@ export class AuthController {
     constructor(private authService: AuthService) {}
 
     @Post('login')
+    @HttpCode(HttpStatus.OK)
     async login(@Body(ValidationPipe) { username, password }: LoginCredentials) {
         const token = await this.authService.login(username, password)
         return {

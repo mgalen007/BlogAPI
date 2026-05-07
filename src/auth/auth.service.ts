@@ -22,16 +22,10 @@ export class AuthService {
     async register(user: CreateUserDto) {
         const newUser = await this.usersService.create(user)
         return newUser
-        // { 
-        //     id: newUser.id,
-        //     username: newUser.username,
-        //     bio: newUser.bio,
-        //     email: newUser.email
-        // }
     }
 
     async hash(password: string) {
-        const hash = await bcrypt.hash(password, process.env.BCRYPT_SALT_ROUNDS!)
+        const hash = await bcrypt.hash(password, Number(process.env.BCRYPT_SALT_ROUNDS!))
         return hash
     }
 }
