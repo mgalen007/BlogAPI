@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Put, Delete, Body, ParseIntPipe, HttpStatus, ParseUUIDPipe, Param, Query, ValidationPipe, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, ParseIntPipe, HttpStatus, UseGuards, ParseUUIDPipe, Param, Query, ValidationPipe, HttpCode } from '@nestjs/common';
 import { CommentsService } from './comments.service'
 import { CreateCommentDto } from './dto/create-comment.dto'
 import { UpdateCommentDto } from './dto/update-comment.dto'
+import { JwtAuthGuard } from '../guards/jwt-auth.guard'
 
+@UseGuards(JwtAuthGuard)
 @Controller('comments')
 export class CommentsController {
     constructor(private commentsService: CommentsService) {}
