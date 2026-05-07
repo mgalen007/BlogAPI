@@ -17,6 +17,7 @@ export class AuthController {
     }
 
     @Post('register')
+    @HttpCode(HttpStatus.CREATED)
     async register(@Body(ValidationPipe) info: RegisterCredentials) {
         const hash = await this.authService.hash(info.password)
         const newUser = await this.authService.register({
