@@ -7,7 +7,7 @@ import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
 import { TagsModule } from './tags/tags.module';
 import { PrismaModule } from './prisma/prisma.module';
-import { JwtModule } from './auth/jwt/jwt.module'
+import { JwtModule } from './auth/jwt/jwt.module';
 
 @Module({
   imports: [

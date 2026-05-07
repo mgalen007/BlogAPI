@@ -13,13 +13,13 @@ import {
   Body,
   Delete,
   ParseUUIDPipe,
-  UseGuards
+  UseGuards,
 } from '@nestjs/common';
 import { PostsExceptionFilter } from '../filters/posts.filter';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
-import { JwtAuthGuard } from '../guards/jwt-auth.guard'
+import { JwtAuthGuard } from '../guards/jwt-auth.guard';
 
 @UseGuards(JwtAuthGuard)
 @Controller('posts')
@@ -65,6 +65,6 @@ export class PostsController {
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
   async remove(@Param('id', ParseUUIDPipe) id: string) {
-    await this.postsService.remove(id)
+    await this.postsService.remove(id);
   }
 }

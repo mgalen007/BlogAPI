@@ -1,9 +1,9 @@
-import { IsString } from 'class-validator'
+import { IsString } from 'class-validator';
 
 export class CreateCommentDto {
-    @IsString()
-    authorId!: string
+  @IsString()
+  authorId!: string;
 
-    @IsString()
-    content!: string
+  @IsString()
+  content!: string;
 }

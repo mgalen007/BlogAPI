@@ -1,24 +1,24 @@
-import { IsString, IsEmail, IsOptional } from 'class-validator'
+import { IsString, IsEmail, IsOptional } from 'class-validator';
 
 export class LoginCredentials {
-    @IsString()
-    username!: string
+  @IsString()
+  username!: string;
 
-    @IsString()
-    password!: string
+  @IsString()
+  password!: string;
 }
 
 export class RegisterCredentials {
-    @IsString()
-    username!: string
+  @IsString()
+  username!: string;
 
-    @IsEmail()
-    email!: string
+  @IsEmail()
+  email!: string;
 
-    @IsString()
-    @IsOptional()
-    bio?: string
+  @IsString()
+  @IsOptional()
+  bio?: string;
 
-    @IsString()
-    password!: string
+  @IsString()
+  password!: string;
 }
