@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common'
-import jwt from 'jsonwebtoken'
+import { Injectable, UnauthorizedException } from '@nestjs/common'
+import jwt, { JsonWebTokenError } from 'jsonwebtoken'
 import { type IUser } from '../../shared/types/user'
 
 @Injectable() 
@@ -14,7 +14,14 @@ export class JwtService {
     }
 
     verify(token: string) {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY!)
-        return decoded
+        try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY!)
+            return decoded
+        }
+        catch(err: unknown) {
+            if (err instanceof JsonWebTokenError) {
+                throw new UnauthorizedException('Invalid token')
+            }
+        }
     }
 }
