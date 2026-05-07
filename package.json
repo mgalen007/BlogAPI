@@ -25,8 +25,12 @@
     "@nestjs/platform-express": "^11.0.1",
     "@prisma/client": "^6.19.3",
     "@prisma/config": "^6.19.3",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "bcryptjs": "^3.0.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
+    "jsonwebtoken": "^9.0.3",
     "prisma": "^6.19.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
